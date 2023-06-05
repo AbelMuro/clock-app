@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'inter';
+    src: url('./Assets/Fonts/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+:root{
+    --font: 'inter'
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    transition: all 0.2s linear;
+    font-family: var(--font);
+}
+
+body{
+    min-height: 100vh;
+}
+
+
+.container{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}

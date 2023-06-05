@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 540px;
+    position: absolute;
+    top: 56px;
+    left: 165px;
+    position: relative;
+}
+
+.refresh{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    right: -26px;
+    mask-image:url('./icons/icon-refresh.svg');
+    -webkit-mask-image: url('./icons/icon-refresh.svg');
+    mask-size: 16px 16px;
+    -webkit-mask-size: 16px 16px;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    background-color: #707070;
+    cursor: pointer;
+}
+
+.refresh:hover{
+    background-color: #FFFFFF;
+}
