@@ -20,13 +20,15 @@ function Quotes() {
 
     return(
         <section className={styles.container}>
-            <p className={styles.quote}>
-                {quote ? quote.quote : <></>}
-            </p>
-            <h1 className={styles.quoteAuthor}>
-                {quote ? quote.author : <></>}
-            </h1>
-            <div className={styles.refresh} onClick={handleClick}></div>
+            <div className={styles.content}>
+                <p className={styles.quote}>
+                    {quote ? quote.quote : <></>}
+                </p>
+                <h1 className={styles.quoteAuthor}>
+                    {quote ? quote.author : <></>}
+                </h1>
+                <div className={styles.refresh} onClick={handleClick}></div>                
+            </div>
         </section>
     )
 }

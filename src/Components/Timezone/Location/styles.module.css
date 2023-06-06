@@ -1,0 +1,32 @@
+.location{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 4.8px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.location{
+    grid-row: 3/4;
+    grid-column: 1/3;
+}
+
+
+@media(max-width: 800px){
+    .location{
+        grid-row: initial;
+        grid-column: initial;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 3.6px;
+    }
+}
+
+@media(max-width: 600px) {
+    .location{
+        font-size: 15px;
+        line-height: 28px;
+        letter-spacing: 3px;
+    }
+}

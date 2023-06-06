@@ -1,12 +1,20 @@
 .container{
     display: flex;
-    flex-direction: column;
-    gap: 13px;
-    width: 540px;
+    width: 1110px;
     position: absolute;
     top: 56px;
-    left: 165px;
+    left: 0;
+    right: 0;
+    margin: auto;
     position: relative;
+}
+
+.content{
+    width: 540px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
 }
 
 .refresh{
@@ -23,7 +31,7 @@
     -webkit-mask-repeat: no-repeat;
     mask-position: center;
     -webkit-mask-position: center;
-    background-color: #707070;
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
 }
 
@@ -43,4 +51,24 @@
     font-weight: 700;
     line-height: 28px;
     color: white;
+}
+
+@media(max-width: 1200px){
+    .container{
+        width: 90%;
+    }
+}
+
+@media(max-width: 600px){
+    .container{
+        top: 32px;
+    }
+    
+    .content{
+        width: 70%;
+    }
+    .quote, .quoteAuthor{
+        font-size: 12px;
+        line-height: 22px;
+    }
 }
