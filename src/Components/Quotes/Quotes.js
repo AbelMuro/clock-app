@@ -1,13 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, memo} from 'react';
 import styles from './styles.module.css';
 
 function Quotes() {
-    const [quote, setQuote] = useState(null)
+    const [quote, setQuote] = useState(null);
 
-    useEffect(() => {
+    const makeFetchRequest = () => {
         fetch('https://programming-quotesapi.vercel.app/api/random')
             .then(response => response.json())
             .then(results => setQuote(results));
+    }
+
+    const handleClick = () => {
+        makeFetchRequest();
+    }
+
+    useEffect(() => {
+        makeFetchRequest();
     },[])
 
     return(
@@ -18,9 +26,9 @@ function Quotes() {
             <h1 className={styles.quoteAuthor}>
                 {quote ? quote.author : <></>}
             </h1>
-            <div className={styles.refresh}></div>
+            <div className={styles.refresh} onClick={handleClick}></div>
         </section>
     )
 }
 
-export default Quotes;
+export default memo(Quotes);

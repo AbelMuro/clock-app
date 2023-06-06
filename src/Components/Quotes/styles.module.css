@@ -30,3 +30,17 @@
 .refresh:hover{
     background-color: #FFFFFF;
 }
+
+.quote{
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: white;
+}
+
+.quoteAuthor{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    color: white;
+}
