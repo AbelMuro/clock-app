@@ -42,7 +42,7 @@
     grid-row: 3/4;
     width: 146px;
     height: 56px;
-    padding: 0px 9px 0px 21px;
+    padding: 0px 9px 0px 19px;
     border-radius: 28px;
     background-color: white;
     font-size: 16px;
@@ -53,7 +53,12 @@
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    gap: 13px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.showMoreButton:hover .arrowBackground{
+    background-color: #999999;
 }
 
 .arrowBackground{
@@ -64,6 +69,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .arrow{

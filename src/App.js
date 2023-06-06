@@ -4,9 +4,10 @@ import Timezone from './Components/Timezone';
 import images from './Assets/images';
 import './styles.css';
 import useMediaQuery from './Hooks/useMediaQuery';
+import ShareContext from './Components/Context';
+import Dialog from './Components/Dialog';
 
 
-//now i need to make another component for additional data that will expand from the bottom
 function App() {
     const [timezone, setTimezone] = useState('');
     const [greeting, setGreeting] = useState('');
@@ -24,6 +25,7 @@ function App() {
             })
     },[])
 
+    //this will decided if its day time or night time, and will display the appropriate greeting to the user
     useEffect(() => {
         if(!timezone) return;
 
@@ -45,6 +47,7 @@ function App() {
         
     }, [timezone])
 
+    //this will decided which background image to use, based on the time of day and device width
     useEffect(() => {
         if(isDay){
             let imageName = 'daytimeBg';
@@ -65,6 +68,7 @@ function App() {
 
     }, [isDay, mobile, tablet])
 
+    //this will format the current time and display it to the user
     useEffect(() => {
         if(!timezone) return;
 
@@ -82,11 +86,13 @@ function App() {
     }, [timezone])
 
     return(
+
         <main className='container' ref={containerRef}>
             <Quotes/>
             <Timezone greeting={greeting} currentTime={currentTime} isDay={isDay} mobile={mobile}/>
-        </main>
+            <Dialog/>  
+        </main>  
     )
 } 
 
-export default App;
+export default ShareContext(App);
