@@ -4,9 +4,13 @@ import icons from '../../Assets/icons';
 import Location from './Location';
 import {Context} from '../Context'
 
+
+//i need to style the container after the dialog has been expanded
+
 function Timezone ({greeting, currentTime, isDay, mobile}) {
     const {expandDialog, setExpandDialog} = useContext(Context);
     const buttonRef = useRef();
+    const containerRef = useRef();
     const [expand, setExpand] = useState(false)
 
     const handleClick = () => {
@@ -27,11 +31,19 @@ function Timezone ({greeting, currentTime, isDay, mobile}) {
     }, [expand])
 
     useEffect(() => {
+        if(expandDialog){
+            containerRef.current.style.bottom = '456px';
+        }
+            
+        else{
+            containerRef.current.style.bottom = '';
+        }
+            
 
     }, [expandDialog])
 
     return(             
-        <section className={styles.container}>
+        <section className={styles.container} ref={containerRef}>
             <h3 className={styles.greeting}>
                 {isDay ? <img src={icons['sunIcon']} className={styles.dayOrNightIcon} /> 
                     : <img src={icons['moonIcon']} className={styles.dayOrNightIcon}/>}
