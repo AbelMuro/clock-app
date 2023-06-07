@@ -2,17 +2,23 @@ import React, {useEffect, useContext, useRef, memo} from 'react';
 import styles from './styles.module.css';
 import { Context } from '../Context';
 
-function Dialog({data, isDay}) {
+function Dialog({data, isDay, mobile, tablet}) {
     const {expandDialog} = useContext(Context);
     const containerRef = useRef();
 
     useEffect(() => {
-        if(expandDialog)
-            containerRef.current.style.height = '300px';
+        if(expandDialog){
+            if(mobile)
+                containerRef.current.style.height = '40vh';
+            else if(tablet)
+                containerRef.current.style.height = '45vh';
+            else
+                containerRef.current.style.height = '50vh';
+        }
         else
             containerRef.current.style.height = '';
 
-    }, [expandDialog])
+    }, [expandDialog, tablet, mobile])
 
     useEffect(() => {
         const allTitles = document.querySelectorAll('.' + styles.title);

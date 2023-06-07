@@ -30,12 +30,17 @@ function Timezone ({data, isDay, mobile}) {
     }, [expand])
 
     useEffect(() => {
-        if(expandDialog)
-            containerRef.current.style.top = '56px';
+        if(expandDialog){
+            if(mobile)
+                containerRef.current.style.top = '90px'
+            else
+                containerRef.current.style.top = '56px';
+        }
+            
         else
             containerRef.current.style.top = '';
 
-    }, [expandDialog])
+    }, [expandDialog, mobile])
 
 
     //this will format the current time and display it to the user

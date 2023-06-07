@@ -70,7 +70,11 @@ function App() {
                     data={data}
                     isDay={isDay} 
                     mobile={mobile}/>
-                <Dialog data={data} isDay={isDay}/>  
+                <Dialog 
+                    data={data} 
+                    isDay={isDay}
+                    mobile={mobile}
+                    tablet={tablet}/>  
             </main>          
         </>
 
