@@ -16,7 +16,7 @@ function App() {
     const containerRef = useRef();
 
     useEffect(() => {
-        fetch('http://worldtimeapi.org/api/ip')
+        fetch('https://worldtimeapi.org/api/ip')
             .then(response => response.json())
             .then(results => {
                 setData(results);
