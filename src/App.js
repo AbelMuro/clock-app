@@ -6,6 +6,7 @@ import './styles.css';
 import useMediaQuery from './Hooks/useMediaQuery';
 import ShareContext from './Components/Context';
 import Dialog from './Components/Dialog';
+import PreLoadImages from './Components/PreLoadImages';
 
 
 function App() {
@@ -61,14 +62,18 @@ function App() {
 
 
     return(
-        <main className='container' ref={containerRef}>
-            <Quotes/>
-            <Timezone 
-                data={data}
-                isDay={isDay} 
-                mobile={mobile}/>
-            <Dialog data={data} isDay={isDay}/>  
-        </main>  
+        <>
+            <PreLoadImages/> {/* this will load the images faster and will prevent the flash that occurs when we change the background image*/}
+            <main className='container' ref={containerRef}>
+                <Quotes/>
+                <Timezone 
+                    data={data}
+                    isDay={isDay} 
+                    mobile={mobile}/>
+                <Dialog data={data} isDay={isDay}/>  
+            </main>          
+        </>
+
     )
 } 
 

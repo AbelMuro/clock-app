@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 function Location() {
     const [location, setLocation] = useState('');
 
-   useEffect(() => {
+    useEffect(() => {
         const apikey = process.env.geoApiKey;
         fetch(`https://api.ipbase.com/v2/info?apikey=${apikey}&ip=1.1.1.1`)
             .then(response => response.json())
