@@ -11,7 +11,7 @@ function Dialog({data, isDay, mobile, tablet}) {
             if(mobile)
                 containerRef.current.style.height = '40vh';
             else if(tablet)
-                containerRef.current.style.height = '45vh';
+                containerRef.current.style.height = '42vh';
             else
                 containerRef.current.style.height = '50vh';
         }
