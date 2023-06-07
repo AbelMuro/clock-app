@@ -20,7 +20,7 @@ function Quotes() {
         }
         catch(err){
             setLoading(false);
-            console.log(err)
+            console.log(err);
         }
 
     }
@@ -30,7 +30,7 @@ function Quotes() {
     }
 
     useEffect(() => {
-        if(expandDialog) return 
+        if(expandDialog) return; 
 
         makeFetchRequest();
     }, [expandDialog])
@@ -39,12 +39,16 @@ function Quotes() {
     return expandDialog ? <></> : ( 
         <section className={styles.container}>
             <div className={styles.content}>
-                <p className={styles.quote}>
-                    {loading ? <CircularProgress/> : quote && quote.quote}
-                </p>
-                <h1 className={styles.quoteAuthor}>
-                    {loading ? <CircularProgress/> : quote && quote.author}
-                </h1>
+                {loading ? <CircularProgress className={styles.loadingIcon}/> : 
+                    <>
+                        <p className={styles.quote}>
+                            {quote ? quote.quote : <></>}
+                        </p>
+                        <h1 className={styles.quoteAuthor}>
+                            {quote ? quote.author : <></>}
+                        </h1>                    
+                    </>
+}
                 <div className={styles.refresh} onClick={handleClick}></div>                
             </div>
         </section> );

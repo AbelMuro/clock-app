@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 function Location() {
     const [location, setLocation] = useState('Los Angeles, US');
 
-   /*  useEffect(() => {
+   useEffect(() => {
         const apikey = process.env.geoApiKey;
         fetch(`https://api.ipbase.com/v2/info?apikey=${apikey}&ip=1.1.1.1`)
             .then(response => response.json())
@@ -13,13 +13,14 @@ function Location() {
                 const country = results.data.location.country.alpha2;
                 setLocation(`${city}, ${country}`)
             })
-    }, []) */
+            .catch(err => setLocation('Exceeded API call limit'))
+    }, [])
 
     return(
         <h2 className={styles.location}>
             {location}
         </h2>
-        )
+    )
 }
 
 export default memo(Location);

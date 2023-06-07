@@ -2,53 +2,83 @@ import React, {useEffect, useContext, useRef} from 'react';
 import styles from './styles.module.css';
 import { Context } from '../Context';
 
-function Dialog() {
+function Dialog({data, isDay}) {
     const {expandDialog} = useContext(Context);
     const containerRef = useRef();
 
     useEffect(() => {
         if(expandDialog)
-            containerRef.current.style.height = '400px';
+            containerRef.current.style.height = '300px';
         else
             containerRef.current.style.height = '';
 
     }, [expandDialog])
 
+    useEffect(() => {
+        const allTitles = document.querySelectorAll('.' + styles.title);
+        const allData = document.querySelectorAll('.' + styles.data);
+        const line = document.querySelector('.' + styles.line)
+        let colorToUse = ''
+
+        if(isDay){
+            containerRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
+            colorToUse = '#303030';
+        }
+            
+        else{
+            containerRef.current.style.backgroundColor = 'rgba(0, 0, 0, 0.75)';
+            colorToUse = 'white'
+        }
+            
+        allTitles.forEach((title) => {
+            title.style.color = colorToUse;
+        })
+        allData.forEach((data) => {
+            data.style.color = colorToUse;
+        })
+        line.style.backgroundColor = colorToUse;
+
+    }, [isDay])
+
 
     return(
         <section className={styles.container} ref={containerRef}>
-            <div className={styles.userData}>
-                <h2 className={styles.title}>
-                    CURRENT TIMEZONE
-                </h2>
-                <h1 className={styles.data}>
-                    Europe/London
-                </h1>
+            <div className={styles.content}>
+                <div className={styles.userData}>
+                    <h2 className={styles.title}>
+                        CURRENT TIMEZONE
+                    </h2>
+                    <h1 className={styles.data}>
+                        {data ? data.timezone.replace('_', ' ') : ''}
+                    </h1>
+                </div>
+                <div className={styles.line}></div>
+                <div className={styles.userData}>
+                    <h2 className={styles.title}>
+                        Day of the week
+                    </h2>
+                    <h1 className={styles.data}>
+                        {data.day_of_week}
+                    </h1>
+                </div>
+                <div className={styles.userData}>
+                    <h2 className={styles.title}>
+                        Day of the year
+                    </h2>
+                    <h1 className={styles.data}>
+                        {data.day_of_year}
+                    </h1>
+                </div>
+                <div className={styles.userData}>
+                    <h2 className={styles.title}>
+                        Week number
+                    </h2>
+                    <h1 className={styles.data}>
+                        {data.week_number}
+                    </h1>
+                </div>
             </div>
-            <div className={styles.userData}>
-                <h2 className={styles.title}>
-                    Day of the week
-                </h2>
-                <h1 className={styles.data}>
-                    5
-                </h1>
-            </div>
-            <div className={styles.userData}>
-                <h2 className={styles.title}>
-                    Day of the year
-                </h2>
-                <h1 className={styles.data}>
-                    295
-                </h1>
-            </div>
-            <div className={styles.userData}>
-                <h2 className={styles.title}>
-                    Week number
-                </h2>
-                <h1 className={styles.data}>
-                    42
-                </h1>
-            </div>
+
         </section>
         )
 }

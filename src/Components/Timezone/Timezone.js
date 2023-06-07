@@ -5,10 +5,11 @@ import Location from './Location';
 import {Context} from '../Context'
 
 
-//i need to style the container after the dialog has been expanded
-
-function Timezone ({greeting, currentTime, isDay, mobile}) {
+function Timezone ({data, isDay, mobile}) {
     const {expandDialog, setExpandDialog} = useContext(Context);
+    const [currentTime, setCurrentTime] = useState('');
+    const [zone, setZone] = useState('');
+    const [greeting, setGreeting] = useState('');
     const buttonRef = useRef();
     const containerRef = useRef();
     const [expand, setExpand] = useState(false)
@@ -22,25 +23,63 @@ function Timezone ({greeting, currentTime, isDay, mobile}) {
             buttonRef.current.firstElementChild.innerHTML = 'less';
             setExpandDialog(true);
         }
-            
         else{
             buttonRef.current.firstElementChild.innerHTML = 'more';
             setExpandDialog(false);
-        }
-            
+        }   
     }, [expand])
 
     useEffect(() => {
-        if(expandDialog){
-            containerRef.current.style.bottom = '456px';
-        }
-            
-        else{
-            containerRef.current.style.bottom = '';
-        }
-            
+        if(expandDialog)
+            containerRef.current.style.top = '56px';
+        else
+            containerRef.current.style.top = '';
 
     }, [expandDialog])
+
+
+    //this will format the current time and display it to the user
+    useEffect(() => {
+        if(!data) return;
+    
+        const currentTime = new Date(data.datetime);
+        let currentHour = currentTime.getHours();
+        let currentMinutes = currentTime.getMinutes();
+    
+        if(currentHour <= 9)
+            currentHour = '0' + currentHour;
+    
+        if(currentMinutes <= 9)
+            currentMinutes = '0' + currentMinutes;
+    
+        setCurrentTime(`${currentHour}:${currentMinutes}`);
+    }, [data])
+
+    //getting the timezone from the data
+    useEffect(() => {
+        if(!data) return;
+
+        const currentZone = data.abbreviation;
+        setZone(currentZone);
+    }, [data])
+
+    //this will check if its day time or night time, and will display the appropriate greeting to the user
+    useEffect(() => {
+        if(!data) return;
+    
+        const currentTime = data.datetime;
+        const currentHour = new Date(currentTime).getHours();
+    
+        if(currentHour >= 5 && currentHour <= 12)
+            setGreeting("good morning");
+        
+        else if(currentHour >= 13 && currentHour <= 18)
+            setGreeting("good afternoon");
+           
+        else
+            setGreeting("good evening")
+        
+    }, [data])
 
     return(             
         <section className={styles.container} ref={containerRef}>
@@ -52,6 +91,7 @@ function Timezone ({greeting, currentTime, isDay, mobile}) {
             </h3>
             <h1 className={styles.time}>
                 {currentTime}
+                <span className={styles.zone}>{zone}</span>
             </h1>
             <Location/>
             <button className={styles.showMoreButton} onClick={handleClick} ref={buttonRef}>

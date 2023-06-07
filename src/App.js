@@ -9,9 +9,7 @@ import Dialog from './Components/Dialog';
 
 
 function App() {
-    const [timezone, setTimezone] = useState('');
-    const [greeting, setGreeting] = useState('');
-    const [currentTime, setCurrentTime] = useState('');
+    const [data, setData] = useState('');
     const [isDay, setIsDay] = useState(false);
     const mobile = useMediaQuery('(max-width: 600px)');
     const tablet = useMediaQuery('(max-width: 800px)');
@@ -21,31 +19,24 @@ function App() {
         fetch('http://worldtimeapi.org/api/ip')
             .then(response => response.json())
             .then(results => {
-                setTimezone(results);
+                setData(results);
             })
     },[])
 
-    //this will decided if its day time or night time, and will display the appropriate greeting to the user
+    //this will check if its day time or night time, and will display the appropriate greeting to the user
     useEffect(() => {
-        if(!timezone) return;
+        if(!data) return;
 
-        const currentTime = timezone.datetime;
+        const currentTime = data.datetime;
         const currentHour = new Date(currentTime).getHours();
 
-        if(currentHour >= 5 && currentHour <= 12){
-            setGreeting("good morning");
+        if(currentHour >= 5 && currentHour <= 18)
             setIsDay(true);
-        } 
-        else if(currentHour >= 13 && currentHour <= 18){
-            setGreeting("good afternoon");
-            setIsDay(true);
-        }   
-        else{
-            setGreeting("good evening")
+        else
             setIsDay(false);
-        }
         
-    }, [timezone])
+    }, [data])
+
 
     //this will decided which background image to use, based on the time of day and device width
     useEffect(() => {
@@ -68,29 +59,15 @@ function App() {
 
     }, [isDay, mobile, tablet])
 
-    //this will format the current time and display it to the user
-    useEffect(() => {
-        if(!timezone) return;
-
-        const currentTime = new Date(timezone.datetime);
-        let currentHour = currentTime.getHours();
-        let currentMinutes = currentTime.getMinutes();
-
-        if(currentHour <= 9)
-            currentHour = '0' + currentHour;
-
-        if(currentMinutes <= 9)
-            currentMinutes = '0' + currentMinutes;
-
-        setCurrentTime(`${currentHour}:${currentMinutes}`);
-    }, [timezone])
 
     return(
-
         <main className='container' ref={containerRef}>
             <Quotes/>
-            <Timezone greeting={greeting} currentTime={currentTime} isDay={isDay} mobile={mobile}/>
-            <Dialog/>  
+            <Timezone 
+                data={data}
+                isDay={isDay} 
+                mobile={mobile}/>
+            <Dialog data={data} isDay={isDay}/>  
         </main>  
     )
 } 
