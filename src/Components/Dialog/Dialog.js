@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useRef} from 'react';
+import React, {useEffect, useContext, useRef, memo} from 'react';
 import styles from './styles.module.css';
 import { Context } from '../Context';
 
@@ -83,4 +83,4 @@ function Dialog({data, isDay}) {
         )
 }
 
-export default Dialog;
+export default memo(Dialog);

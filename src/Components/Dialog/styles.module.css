@@ -71,9 +71,17 @@
         column-gap: 50px;
         grid-template-columns: 55% 1px 25%;
     }
-}
 
-@media(max-width: 800px){
+    .title{
+        font-size: 13px;
+        letter-spacing: 2.6px;
+    }
+
+    .data{
+        font-size: 40px;
+        line-height: 48.41px;
+    }
+
     .content{
         margin-top: 45px;
         grid-template-columns: 55% 25%;
@@ -90,17 +98,9 @@
     .userData:nth-child(5){
         grid-column: initial;
     }
-
-    .title{
-        font-size: 13px;
-        letter-spacing: 2.6px;
-    }
-
-    .data{
-        font-size: 40px;
-        line-height: 48.41px;
-    }
 }
+
+
 @media(max-width: 600px){
     .content{
         height: initial;

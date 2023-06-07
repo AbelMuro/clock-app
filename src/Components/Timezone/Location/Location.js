@@ -2,7 +2,7 @@ import React, {useState, useEffect, memo} from 'react';
 import styles from './styles.module.css';
 
 function Location() {
-    const [location, setLocation] = useState('Los Angeles, US');
+    const [location, setLocation] = useState('');
 
    useEffect(() => {
         const apikey = process.env.geoApiKey;
