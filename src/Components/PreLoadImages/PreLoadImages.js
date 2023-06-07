@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './styles.module.css';
 import images from '../../Assets/images'
 
@@ -10,9 +10,9 @@ function PreLoadImages() {
             <img src={images['daytimeBgMobile']} className={styles.image}/>
             <img src={images['nighttimeBg']} className={styles.image}/>
             <img src={images['nighttimeBgTablet']} className={styles.image}/>
-            <img src={images['nighttimeBg']} className={styles.image}/>
+            <img src={images['nighttimeBgMobile']} className={styles.image}/>
         </div>
     )
 }
 
-export default PreLoadImages;
+export default memo(PreLoadImages);
