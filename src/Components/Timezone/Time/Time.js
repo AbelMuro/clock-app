@@ -1,14 +1,13 @@
 import React, {useState, useEffect, memo} from 'react';
 import styles from './styles.module.css';
 
-function Time({currentTime, zone}) {
-    const [time, setTime] = useState();
-    const [date, setDate] = useState(currentTime);
+function Time({zone}) {
+    const [time, setTime] = useState('');
+    const [date, setDate] = useState(new Date());
 
-    const formatTime = (currentTime) => {
-        const current_Time = new Date(currentTime);
-        let currentHour = current_Time.getHours();
-        let currentMinutes = current_Time.getMinutes();
+    const formatTime = () => {
+        let currentHour = date.getHours();
+        let currentMinutes = date.getMinutes();
         
         if(currentHour <= 9)
             currentHour = '0' + currentHour;
@@ -21,19 +20,18 @@ function Time({currentTime, zone}) {
 
 
     useEffect(() => {
-        formatTime(currentTime)
-    }, [])
+        formatTime();
+    }, [date])    
 
     useEffect(() => {
-
-        setInterval(() => {
-            const current_Time = new Date(date).getTime();
-            const new_Time = new Date(current_Time + 1000);
-            setDate(new_Time);
-            formatTime(current_Time + 1000);
+        const clock = setInterval(() => {
+            setDate(new Date());
         }, 1000)
-    }, [])
 
+        return () => {
+            clearInterval(clock);
+        }
+    }, [])
 
     return(
         <h1 className={styles.time}>
