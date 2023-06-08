@@ -7,6 +7,26 @@
     grid-column: 1/3;
 }
 
+@keyframes flash {
+    from {
+        visibility: initial;
+    }
+
+    to {
+        visibility: hidden;
+    }
+}
+
+.colon{
+    animation-name: flash;
+    animation-iteration-count: infinite;
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 200px;
+    letter-spacing: -5px;
+    color: white;
+}
+
 
 .zone{
     font-size: 40px;
@@ -18,12 +38,22 @@
 }
 
 
+
+
 @media(max-width: 800px){
     .time{
         font-size: 175px;
         line-height: 175px;
         letter-spacing: -4.38px;
+        grid-column: initial;        
     }
+
+    .colon{
+        font-size: 175px;
+        line-height: 175px;
+        letter-spacing: -4.38px;
+    }
+
 
     .zone{
         font-size: 32px;
@@ -37,6 +67,11 @@
         letter-spacing: -2.5px;
     }
 
+    .colon{
+        font-size: 100px;
+        line-height: 100px;
+        letter-spacing: -2.5px;  
+    }
 
     .zone{
         font-size: 15px;

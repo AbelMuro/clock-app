@@ -2,7 +2,8 @@ import React, {useState, useEffect, memo} from 'react';
 import styles from './styles.module.css';
 
 function Time({zone}) {
-    const [time, setTime] = useState('');
+    const [currentHour, setCurrentHour] = useState('');
+    const [currentMinutes, setCurrentMinutes] = useState('');
     const [date, setDate] = useState(new Date());
 
     const formatTime = () => {
@@ -14,8 +15,8 @@ function Time({zone}) {
         
         if(currentMinutes <= 9)
             currentMinutes = '0' + currentMinutes;
-        
-        setTime(`${currentHour}:${currentMinutes}`); 
+        setCurrentHour(currentHour);
+        setCurrentMinutes(currentMinutes); 
     }
 
 
@@ -33,9 +34,12 @@ function Time({zone}) {
         }
     }, [])
 
+
     return(
         <h1 className={styles.time}>
-            {time}
+            {currentHour}
+            <span className={styles.colon}>:</span>
+            {currentMinutes}
             <span className={styles.zone}>{zone}</span>
         </h1>
     )

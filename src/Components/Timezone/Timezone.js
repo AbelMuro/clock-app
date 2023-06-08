@@ -76,7 +76,7 @@ function Timezone ({data, isDay, mobile}) {
                 {greeting} 
                 {mobile ? "" : ", it's currently"}
             </h3>
-            {data ? <Time currentTime={data.datetime} zone={zone}/> : <></>}
+            <Time currentTime={data.datetime} zone={zone}/>
             <Location/>
             <button className={styles.showMoreButton} onClick={handleClick} ref={buttonRef}>
                 <span></span>
