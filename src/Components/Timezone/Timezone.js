@@ -1,4 +1,5 @@
 import React, {memo, useRef, useState, useEffect, useContext} from 'react';
+import Time from './Time';
 import styles from './styles.module.css';
 import icons from '../../Assets/icons';
 import Location from './Location';
@@ -7,7 +8,6 @@ import {Context} from '../Context'
 
 function Timezone ({data, isDay, mobile}) {
     const {expandDialog, setExpandDialog} = useContext(Context);
-    const [currentTime, setCurrentTime] = useState('');
     const [zone, setZone] = useState('');
     const [greeting, setGreeting] = useState('');
     const buttonRef = useRef();
@@ -41,24 +41,6 @@ function Timezone ({data, isDay, mobile}) {
             containerRef.current.style.top = '';
 
     }, [expandDialog, mobile])
-
-
-    //this will format the current time and display it to the user
-    useEffect(() => {
-        if(!data) return;
-    
-        const currentTime = new Date(data.datetime);
-        let currentHour = currentTime.getHours();
-        let currentMinutes = currentTime.getMinutes();
-    
-        if(currentHour <= 9)
-            currentHour = '0' + currentHour;
-    
-        if(currentMinutes <= 9)
-            currentMinutes = '0' + currentMinutes;
-    
-        setCurrentTime(`${currentHour}:${currentMinutes}`);
-    }, [data])
 
     //getting the timezone from the data
     useEffect(() => {
@@ -94,10 +76,7 @@ function Timezone ({data, isDay, mobile}) {
                 {greeting} 
                 {mobile ? "" : ", it's currently"}
             </h3>
-            <h1 className={styles.time}>
-                {currentTime}
-                <span className={styles.zone}>{zone}</span>
-            </h1>
+            {data ? <Time currentTime={data.datetime} zone={zone}/> : <></>}
             <Location/>
             <button className={styles.showMoreButton} onClick={handleClick} ref={buttonRef}>
                 <span></span>
