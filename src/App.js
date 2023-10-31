@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useRef, useContext} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
+import PreLoadImages from './Components/PreLoadImages'
 import Quotes from './Components/Quotes';
 import Timezone from './Components/Timezone';
 import images from './Assets/images';
@@ -63,6 +64,7 @@ function App() {
 
     return(
         <>
+            <PreLoadImages/>
             <main className='container' ref={containerRef}>
                 <Quotes/>
                 <Timezone 
