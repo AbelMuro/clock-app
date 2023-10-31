@@ -84,7 +84,6 @@ function Dialog({data, isDay, mobile, tablet}) {
                     </h1>
                 </div>
             </div>
-
         </section>
         )
 }

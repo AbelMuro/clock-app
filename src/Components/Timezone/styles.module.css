@@ -121,6 +121,11 @@
 @media(max-width: 600px){
     .container{
         gap: 16px;
+        grid-template-columns: auto;
+    }
+
+    .greeting, .time{
+        grid-column: 1/2;
     }
 
     .greeting{

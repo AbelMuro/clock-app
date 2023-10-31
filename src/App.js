@@ -39,7 +39,7 @@ function App() {
     }, [data])
 
 
-    //this will decided which background image to use, based on the time of day and device width
+    //this will decide which background image to use, based on the time of day and device width
     useEffect(() => {
         if(isDay){
             let imageName = 'daytimeBg';
@@ -63,7 +63,6 @@ function App() {
 
     return(
         <>
-            <PreLoadImages/> {/* this will load the images faster and will prevent the flash that occurs when we change the background image*/}
             <main className='container' ref={containerRef}>
                 <Quotes/>
                 <Timezone 

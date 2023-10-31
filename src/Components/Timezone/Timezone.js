@@ -5,7 +5,6 @@ import icons from '../../Assets/icons';
 import Location from './Location';
 import {Context} from '../Context'
 
-
 function Timezone ({data, isDay, mobile}) {
     const {expandDialog, setExpandDialog} = useContext(Context);
     const [zone, setZone] = useState('');
@@ -36,7 +35,6 @@ function Timezone ({data, isDay, mobile}) {
             else
                 containerRef.current.style.top = '56px';
         }
-            
         else
             containerRef.current.style.top = '';
 
