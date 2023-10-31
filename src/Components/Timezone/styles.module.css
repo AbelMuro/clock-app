@@ -5,7 +5,8 @@
     grid-template-rows: auto auto 28px;
     row-gap: 16px;
     justify-content: space-between;
-    margin: auto;
+    margin: 0px auto 0px auto;
+    align-self: end;
 }
 
 .greeting{
