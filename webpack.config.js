@@ -18,7 +18,7 @@ module.exports = {
         new dotenv                            //this enables the use of env variables, you must use process.env.name_of_variable
     ],
     devServer: {                              //configuration property for the development server
-        port: 3000,                           //the devServer will start in port 3000
+        port: 4000,                           //the devServer will start in port 3000
         historyApiFallback: true,             //this property helps with routing in our react app, everytime we refresh the page, react router will send a request to a server, but this property will make sure it searches for an index file first
     },
     
