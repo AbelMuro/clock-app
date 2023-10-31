@@ -1,15 +1,10 @@
 .container{
     width: 1110px;
-    margin: auto;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto 28px;
     row-gap: 16px;
     justify-content: space-between;
-    position: absolute;
-    top: 350px;
-    left: 0;
-    right: 0;
     margin: auto;
 }
 

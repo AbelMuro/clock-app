@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useContext} from 'react';
 import Quotes from './Components/Quotes';
 import Timezone from './Components/Timezone';
 import images from './Assets/images';
@@ -6,7 +6,6 @@ import './styles.css';
 import useMediaQuery from './Hooks/useMediaQuery';
 import ShareContext from './Components/Context';
 import Dialog from './Components/Dialog';
-import PreLoadImages from './Components/PreLoadImages';
 
 
 function App() {
@@ -59,6 +58,7 @@ function App() {
         }
 
     }, [isDay, mobile, tablet])
+
 
 
     return(
