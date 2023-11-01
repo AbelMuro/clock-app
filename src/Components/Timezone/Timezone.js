@@ -14,7 +14,6 @@ function Timezone ({data, isDay, mobile}) {
     const [expand, setExpand] = useState(false)
 
     const handleClick = () => {
-        window.scrollTo(9999, 9999);
         setExpand(!expand);
     }
 
@@ -22,6 +21,7 @@ function Timezone ({data, isDay, mobile}) {
         if(expand){
             buttonRef.current.firstElementChild.innerHTML = 'less';
             setExpandDialog(true);
+            window.scrollTo(9999, 9999);
         }
         else{
             buttonRef.current.firstElementChild.innerHTML = 'more';
