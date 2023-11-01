@@ -14,6 +14,7 @@ function Timezone ({data, isDay, mobile}) {
     const [expand, setExpand] = useState(false)
 
     const handleClick = () => {
+        window.scrollTo(9999, 9999);
         setExpand(!expand);
     }
 
